@@ -11,13 +11,13 @@ using Exiled.API.Features;
 namespace Mistaken.CustomHierarchii
 {
     /// <inheritdoc/>
-    public class PluginHandler : Plugin<Config>
+    internal class PluginHandler : Plugin<Config, Translation>
     {
         /// <inheritdoc/>
         public override string Author => "Mistaken Devs";
 
         /// <inheritdoc/>
-        public override string Name => "CustomHierarchii";
+        public override string Name => "CustomHierarchy";
 
         /// <inheritdoc/>
         public override string Prefix => "MCH";
@@ -26,7 +26,7 @@ namespace Mistaken.CustomHierarchii
         public override PluginPriority Priority => PluginPriority.Default;
 
         /// <inheritdoc/>
-        public override Version RequiredExiledVersion => new Version(3, 0, 0, 84);
+        public override Version RequiredExiledVersion => new Version(3, 0, 3);
 
         /// <inheritdoc/>
         public override void OnEnabled()

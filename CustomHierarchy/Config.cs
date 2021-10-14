@@ -5,12 +5,13 @@
 // -----------------------------------------------------------------------
 
 using System.ComponentModel;
+using Exiled.API.Interfaces;
 using Mistaken.Updater.Config;
 
 namespace Mistaken.CustomHierarchii
 {
     /// <inheritdoc/>
-    public class Config : IAutoUpdatableConfig
+    internal class Config : IAutoUpdatableConfig
     {
         /// <inheritdoc/>
         public bool IsEnabled { get; set; } = true;
