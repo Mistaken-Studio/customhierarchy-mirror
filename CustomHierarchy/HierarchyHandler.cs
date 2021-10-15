@@ -176,6 +176,7 @@ namespace Mistaken.CustomHierarchii
         {
             Exiled.Events.Handlers.Player.ChangingRole -= this.Handle<Exiled.Events.EventArgs.ChangingRoleEventArgs>((ev) => this.Player_ChangingRole(ev));
             Exiled.Events.Handlers.Player.Verified -= this.Handle<Exiled.Events.EventArgs.VerifiedEventArgs>((ev) => this.Player_Verified(ev));
+            Exiled.Events.Handlers.Server.RespawningTeam -= this.Handle<Exiled.Events.EventArgs.RespawningTeamEventArgs>((ev) => this.Server_RespawningTeam(ev));
         }
 
         /// <inheritdoc/>
@@ -183,6 +184,7 @@ namespace Mistaken.CustomHierarchii
         {
             Exiled.Events.Handlers.Player.ChangingRole += this.Handle<Exiled.Events.EventArgs.ChangingRoleEventArgs>((ev) => this.Player_ChangingRole(ev));
             Exiled.Events.Handlers.Player.Verified += this.Handle<Exiled.Events.EventArgs.VerifiedEventArgs>((ev) => this.Player_Verified(ev));
+            Exiled.Events.Handlers.Server.RespawningTeam += this.Handle<Exiled.Events.EventArgs.RespawningTeamEventArgs>((ev) => this.Server_RespawningTeam(ev));
         }
 
         /// <inheritdoc cref="Module.Module(Exiled.API.Interfaces.IPlugin{Exiled.API.Interfaces.IConfig})"/>
@@ -191,9 +193,20 @@ namespace Mistaken.CustomHierarchii
         {
         }
 
+        private void Server_RespawningTeam(Exiled.Events.EventArgs.RespawningTeamEventArgs ev)
+        {
+            this.CallDelayed(.2f, () =>
+            {
+                foreach (var item in ev.Players)
+                    UpdatePlayer(item);
+            });
+        }
+
         private void Player_ChangingRole(Exiled.Events.EventArgs.ChangingRoleEventArgs ev)
         {
             if (ev.NewRole == RoleType.Spectator)
+                return;
+            if (ev.Reason == Exiled.API.Enums.SpawnReason.Respawn)
                 return;
             this.CallDelayed(.2f, () => UpdatePlayer(ev.Player));
         }

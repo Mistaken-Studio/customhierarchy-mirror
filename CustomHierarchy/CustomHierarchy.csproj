@@ -80,7 +80,7 @@
   <PropertyGroup>
     <PreBuildEvent>
       nuget install
-    </PreBuildEvent>
+</PreBuildEvent>
     <PostBuildEvent>
       copy $(TargetPath) $(MISTAKEN_REFERENCES)\$(TargetFileName)
       copy $(TargetDir)\$(TargetName).xml $(MISTAKEN_REFERENCES)\$(TargetName).xml
