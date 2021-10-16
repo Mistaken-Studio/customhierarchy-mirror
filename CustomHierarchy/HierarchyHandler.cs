@@ -12,7 +12,7 @@ using Exiled.API.Features;
 using Mistaken.API;
 using Mistaken.API.Diagnostics;
 
-namespace Mistaken.CustomHierarchii
+namespace Mistaken.CustomHierarchy
 {
     /// <inheritdoc/>
     public partial class HierarchyHandler : Module

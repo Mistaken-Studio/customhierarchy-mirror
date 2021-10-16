@@ -6,7 +6,7 @@
 
 using Exiled.API.Interfaces;
 
-namespace Mistaken.CustomHierarchii
+namespace Mistaken.CustomHierarchy
 {
     internal class Translation : ITranslation
     {

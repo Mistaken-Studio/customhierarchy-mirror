@@ -8,7 +8,7 @@ using System;
 using Exiled.API.Enums;
 using Exiled.API.Features;
 
-namespace Mistaken.CustomHierarchii
+namespace Mistaken.CustomHierarchy
 {
     /// <inheritdoc/>
     internal class PluginHandler : Plugin<Config, Translation>
@@ -20,7 +20,7 @@ namespace Mistaken.CustomHierarchii
         public override string Name => "CustomHierarchy";
 
         /// <inheritdoc/>
-        public override string Prefix => "MCH";
+        public override string Prefix => "MCustomHierarchy";
 
         /// <inheritdoc/>
         public override PluginPriority Priority => PluginPriority.Default;
