@@ -143,13 +143,13 @@ namespace Mistaken.CustomHierarchy
                 switch (diff)
                 {
                     case CompareResult.FOLLOW_ORDERS:
-                        CustomInfoHandler.SetTarget(p1, "hierarchy", PluginHandler.Instance.Translation.FollowOrders, p2);
-                        CustomInfoHandler.SetTarget(p2, "hierarchy", PluginHandler.Instance.Translation.GiveOrders, p1);
+                        CustomInfoHandler.SetTarget(p1, "hierarchy", PluginHandler.Instance.Translation.GiveOrders, p2);
+                        CustomInfoHandler.SetTarget(p2, "hierarchy", PluginHandler.Instance.Translation.FollowOrders, p1);
                         break;
 
                     case CompareResult.GIVE_ORDERS:
-                        CustomInfoHandler.SetTarget(p1, "hierarchy", PluginHandler.Instance.Translation.GiveOrders, p2);
-                        CustomInfoHandler.SetTarget(p2, "hierarchy", PluginHandler.Instance.Translation.FollowOrders, p1);
+                        CustomInfoHandler.SetTarget(p1, "hierarchy", PluginHandler.Instance.Translation.FollowOrders, p2);
+                        CustomInfoHandler.SetTarget(p2, "hierarchy", PluginHandler.Instance.Translation.GiveOrders, p1);
                         break;
 
                     case CompareResult.SAME_RANK:
