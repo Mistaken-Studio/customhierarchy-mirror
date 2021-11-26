@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Mistaken.CustomHierarchii
+namespace Mistaken.CustomHierarchy
 {
     public partial class HierarchyHandler
     {

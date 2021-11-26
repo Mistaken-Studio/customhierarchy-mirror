@@ -8,7 +8,7 @@ using System.ComponentModel;
 using Exiled.API.Interfaces;
 using Mistaken.Updater.Config;
 
-namespace Mistaken.CustomHierarchii
+namespace Mistaken.CustomHierarchy
 {
     /// <inheritdoc/>
     internal class Config : IAutoUpdatableConfig
