@@ -172,19 +172,19 @@ namespace Mistaken.CustomHierarchy
         public override string Name => "Hierarchy";
 
         /// <inheritdoc/>
-        public override void OnDisable()
+        public override void OnEnable()
         {
-            Exiled.Events.Handlers.Player.ChangingRole -= this.Handle<Exiled.Events.EventArgs.ChangingRoleEventArgs>((ev) => this.Player_ChangingRole(ev));
-            Exiled.Events.Handlers.Player.Verified -= this.Handle<Exiled.Events.EventArgs.VerifiedEventArgs>((ev) => this.Player_Verified(ev));
-            Exiled.Events.Handlers.Server.RespawningTeam -= this.Handle<Exiled.Events.EventArgs.RespawningTeamEventArgs>((ev) => this.Server_RespawningTeam(ev));
+            Exiled.Events.Handlers.Player.ChangingRole += this.Player_ChangingRole;
+            Exiled.Events.Handlers.Player.Verified += this.Player_Verified;
+            Exiled.Events.Handlers.Server.RespawningTeam += this.Server_RespawningTeam;
         }
 
         /// <inheritdoc/>
-        public override void OnEnable()
+        public override void OnDisable()
         {
-            Exiled.Events.Handlers.Player.ChangingRole += this.Handle<Exiled.Events.EventArgs.ChangingRoleEventArgs>((ev) => this.Player_ChangingRole(ev));
-            Exiled.Events.Handlers.Player.Verified += this.Handle<Exiled.Events.EventArgs.VerifiedEventArgs>((ev) => this.Player_Verified(ev));
-            Exiled.Events.Handlers.Server.RespawningTeam += this.Handle<Exiled.Events.EventArgs.RespawningTeamEventArgs>((ev) => this.Server_RespawningTeam(ev));
+            Exiled.Events.Handlers.Player.ChangingRole -= this.Player_ChangingRole;
+            Exiled.Events.Handlers.Player.Verified -= this.Player_Verified;
+            Exiled.Events.Handlers.Server.RespawningTeam -= this.Server_RespawningTeam;
         }
 
         /// <inheritdoc cref="Module.Module(Exiled.API.Interfaces.IPlugin{Exiled.API.Interfaces.IConfig})"/>
