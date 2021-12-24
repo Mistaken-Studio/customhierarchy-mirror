@@ -21,7 +21,28 @@ namespace Mistaken.CustomHierarchy
         /// Dictionary containing Custom Comparers with priority (Dictionary's key is only to delete or modify existing custom comparers).
         /// </summary>
         public static readonly Dictionary<string, (int Priority, Func<Player, Player, CompareResult> Comparer)> CustomPlayerComperers
-            = new Dictionary<string, (int Priority, Func<Player, Player, CompareResult> Comparer)>();
+            = new Dictionary<string, (int Priority, Func<Player, Player, CompareResult> Comparer)>()
+            {
+                {
+                    "scp049",
+                    (0, (Func<Player, Player, CompareResult>)((p1, p2) =>
+                    {
+                        if (p1.Side != Exiled.API.Enums.Side.Scp)
+                            return CompareResult.NO_ACTION;
+
+                        if (p2.Side != Exiled.API.Enums.Side.Scp)
+                            return CompareResult.NO_ACTION;
+
+                        if (p1.Role == RoleType.Scp049 && p2.Role == RoleType.Scp0492)
+                            return CompareResult.GIVE_ORDERS;
+
+                        if (p2.Role == RoleType.Scp049 && p1.Role == RoleType.Scp0492)
+                            return CompareResult.FOLLOW_ORDERS;
+
+                        return CompareResult.DO_NOT_COMPARE;
+                    }))
+                },
+            };
 
         /// <summary>
         /// Compares <paramref name="player1"/> to <paramref name="player2"/>.
@@ -101,6 +122,9 @@ namespace Mistaken.CustomHierarchy
                 case RoleType.NtfCaptain:
                     value += 400;
                     break;
+
+                case RoleType.Scp049:
+                    return short.MaxValue;
             }
 
             Exiled.API.Features.Log.Debug($"[Hierarchy] {player.Nickname}'s lvl: {value}", PluginHandler.Instance.Config.VerbouseOutput);
