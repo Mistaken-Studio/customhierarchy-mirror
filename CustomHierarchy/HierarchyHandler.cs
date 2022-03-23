@@ -27,10 +27,10 @@ namespace Mistaken.CustomHierarchy
                     "scp049",
                     (0, (Func<Player, Player, CompareResult>)((p1, p2) =>
                     {
-                        if (p1.Side != Exiled.API.Enums.Side.Scp)
+                        if (p1.Role.Side != Exiled.API.Enums.Side.Scp)
                             return CompareResult.NO_ACTION;
 
-                        if (p2.Side != Exiled.API.Enums.Side.Scp)
+                        if (p2.Role.Side != Exiled.API.Enums.Side.Scp)
                             return CompareResult.NO_ACTION;
 
                         if (p1.Role == RoleType.Scp049 && p2.Role == RoleType.Scp0492)
@@ -69,7 +69,7 @@ namespace Mistaken.CustomHierarchy
             if (doNotCompare)
                 return CompareResult.DO_NOT_COMPARE;
 
-            if (player1.Side != player2.Side)
+            if (player1.Role.Side != player2.Role.Side)
                 return CompareResult.DO_NOT_COMPARE;
 
             if (player1.Role == RoleType.ClassD)
@@ -96,7 +96,7 @@ namespace Mistaken.CustomHierarchy
         {
             short value = GetUnitValue(player);
 
-            switch (player.Role)
+            switch (player.Role.Type)
             {
                 case RoleType.Scientist:
                     value += 0;
